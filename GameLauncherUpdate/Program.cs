@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace GameLauncherUpdate
+namespace GameLauncherUpdater
 {
     static class Program
     {
@@ -15,7 +13,7 @@ namespace GameLauncherUpdate
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new Form1());
+            Application.Run(new Updater());
         }
     }
 }
