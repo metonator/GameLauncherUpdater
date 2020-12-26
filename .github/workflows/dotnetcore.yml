@@ -1,4 +1,4 @@
-name: GameLauncher Reborn Build
+name: GameLauncherUpdater Build
 
 on: [push]
  
@@ -7,7 +7,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      run: nuget restore GameLauncherUpdater.sln
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
       env:
