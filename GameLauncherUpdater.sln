@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLauncherUpdate", "GameLauncherUpdate\GameLauncherUpdate.csproj", "{C3DFD242-2688-4228-88E8-D4588CBA1833}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLauncherUpdater", "GameLauncherUpdater\GameLauncherUpdater.csproj", "{C3DFD242-2688-4228-88E8-D4588CBA1833}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
