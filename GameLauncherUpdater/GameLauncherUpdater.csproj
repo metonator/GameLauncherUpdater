@@ -119,7 +119,6 @@
   <ItemGroup>
     <Content Include="Launcher-W.ico" />
     <None Include="Resources\Background.png" />
-    <None Include="Resources\beta_map_v2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
