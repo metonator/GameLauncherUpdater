@@ -397,8 +397,7 @@ namespace SimpleJSON {
 
 		public virtual double AsDouble {
 			get {
-				double v = 0.0;
-				if (double.TryParse(Value, NumberStyles.Float, CultureInfo.InvariantCulture, out v))
+				if (double.TryParse(Value, NumberStyles.Float, CultureInfo.InvariantCulture, out double v))
 					return v;
 				return 0.0;
 			}
@@ -427,8 +426,7 @@ namespace SimpleJSON {
 
 		public virtual bool AsBool {
 			get {
-				bool v = false;
-				if (bool.TryParse(Value, out v))
+				if (bool.TryParse(Value, out bool v))
 					return v;
 				return !string.IsNullOrEmpty(Value);
 			}
@@ -439,8 +437,7 @@ namespace SimpleJSON {
 
 		public virtual long AsLong {
 			get {
-				long val = 0;
-				if (long.TryParse(Value, out val))
+				if (long.TryParse(Value, out long val))
 					return val;
 				return 0L;
 			}
@@ -597,12 +594,11 @@ namespace SimpleJSON {
 				return tmp == "true";
 			if (tmp == "null")
 				return JSONNull.CreateOrGet();
-			double val;
-			if (double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out val))
-				return val;
-			else
-				return token;
-		}
+            if (double.TryParse(token, NumberStyles.Float, CultureInfo.InvariantCulture, out double val))
+                return val;
+            else
+                return token;
+        }
 
 		public static JSONNode Parse(string aJSON) {
 			Stack<JSONNode> stack = new Stack<JSONNode>();
@@ -688,7 +684,6 @@ namespace SimpleJSON {
 					TokenIsQuoted = false;
 					TokenName = "";
 					Token.Length = 0;
-					TokenIsQuoted = false;
 					break;
 
 					case '\r':
@@ -1077,10 +1072,9 @@ namespace SimpleJSON {
 				return m_Data.ToString(CultureInfo.InvariantCulture);
 			}
 			set {
-				double v;
-				if (double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out v))
-					m_Data = v;
-			}
+                if (double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double v))
+                    m_Data = v;
+            }
 		}
 
 		public override double AsDouble {
@@ -1159,10 +1153,9 @@ namespace SimpleJSON {
 				return m_Data.ToString();
 			}
 			set {
-				bool v;
-				if (bool.TryParse(value, out v))
-					m_Data = v;
-			}
+                if (bool.TryParse(value, out bool v))
+                    m_Data = v;
+            }
 		}
 		public override bool AsBool {
 			get {

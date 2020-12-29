@@ -21,16 +21,16 @@ namespace GameLauncherUpdater
         }
 
         public void error(string error) {
-            information.Text = error.ToString();
+            Information.Text = error.ToString();
             Delay.WaitSeconds(2);
             Process.GetProcessById(Process.GetCurrentProcess().Id).Kill();
         }
 
         public void success(string success) {
-            information.Text = success.ToString();
+            Information.Text = success.ToString();
         }
 
-        public void update() {
+        public void DoUpdate() {
             string[] args = Environment.GetCommandLineArgs();
 
             if (args.Length == 2) {
@@ -60,8 +60,8 @@ namespace GameLauncherUpdater
                     {
                         Thread thread = new Thread(() => {
                             WebClient client2 = new WebClient();
-                            client2.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                            client2.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                            client2.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
+                            client2.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
                             client2.DownloadFileAsync(new Uri(json["payload"]["update"]["download_url"]), tempNameZip);
 						});
                         thread.Start();
@@ -74,7 +74,7 @@ namespace GameLauncherUpdater
                 }
                 catch 
                 {
-                    information.Text = "Failed to Connect to Main API --> Connecting to GitHub API";
+                    Information.Text = "Failed to Connect to Main API --> Connecting to GitHub API";
                 }
             };
             
@@ -92,8 +92,8 @@ namespace GameLauncherUpdater
                     {
                         Thread thread = new Thread(() => {
                             WebClient client4 = new WebClient();
-                            client4.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                            client4.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                            client4.DownloadProgressChanged += new DownloadProgressChangedEventHandler(Client_DownloadProgressChanged);
+                            client4.DownloadFileCompleted += new AsyncCompletedEventHandler(Client_DownloadFileCompleted);
                             client4.DownloadFileAsync(new Uri("http://github.com/SoapboxRaceWorld/GameLauncher_NFSW/releases/download/" + json.tag_name + "/Release_" + json.tag_name + ".zip"), tempNameZip);
                         });
                         thread.Start();
@@ -123,27 +123,27 @@ namespace GameLauncherUpdater
             return "0 Bytes";
         }
 
-        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) {
+        void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) {
             this.BeginInvoke((MethodInvoker)delegate {
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
                 double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
                 double percentage = bytesIn / totalBytes * 100;
-                information.Text = "Downloaded " + FormatFileSize(e.BytesReceived) + " of " + FormatFileSize(e.TotalBytesToReceive);
-                downloadProgress.Style = ProgressBarStyle.Blocks;
-                downloadProgress.Value = int.Parse(Math.Truncate(percentage).ToString());
+                Information.Text = "Downloaded " + FormatFileSize(e.BytesReceived) + " of " + FormatFileSize(e.TotalBytesToReceive);
+                DownloadProgress.Style = ProgressBarStyle.Blocks;
+                DownloadProgress.Value = int.Parse(Math.Truncate(percentage).ToString());
             });
         }
 
-        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e) {
+        void Client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e) {
             this.BeginInvoke((MethodInvoker)delegate {
-                downloadProgress.Style = ProgressBarStyle.Marquee;
+                DownloadProgress.Style = ProgressBarStyle.Marquee;
 
                 string updatePath = Path.GetDirectoryName(Application.ExecutablePath) + "\\";
                 using (ZipArchive archive = ZipFile.OpenRead(tempNameZip)) {
                     int numFiles = archive.Entries.Count;
                     int current = 1;
 
-                    downloadProgress.Style = ProgressBarStyle.Blocks;
+                    DownloadProgress.Style = ProgressBarStyle.Blocks;
 
                     foreach (ZipArchiveEntry entry in archive.Entries) {
                         string fullName = entry.FullName;
@@ -161,13 +161,13 @@ namespace GameLauncherUpdater
                                     File.Delete(fullName);
                                 }
 
-                                information.Text = "Extracting: " + fullName;
+                                Information.Text = "Extracting: " + fullName;
 								try { entry.ExtractToFile(Path.Combine(updatePath, fullName)); } catch { }
                                 Delay.WaitMSeconds(200);
                             }
                         }
 
-                        downloadProgress.Value = (int)((long)100 * current / numFiles);
+                        DownloadProgress.Value = (int)((long)100 * current / numFiles);
                         current++;
                     }
                 }
@@ -179,7 +179,7 @@ namespace GameLauncherUpdater
 
         private void Form1_Load(object sender, EventArgs e) {
 			this.BeginInvoke((MethodInvoker)delegate {
-				update();
+				DoUpdate();
 			});
 		}
     }

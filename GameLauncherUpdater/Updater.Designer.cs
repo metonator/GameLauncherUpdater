@@ -29,57 +29,57 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
-			this.downloadProgress = new System.Windows.Forms.ProgressBar();
-			this.information = new System.Windows.Forms.Label();
-			this.SuspendLayout();
-			// 
-			// downloadProgress
-			// 
-            this.downloadProgress.Location = new System.Drawing.Point(12, 41);
-			this.downloadProgress.Name = "downloadProgress";
-			this.downloadProgress.Size = new System.Drawing.Size(331, 10);
-			this.downloadProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-			this.downloadProgress.TabIndex = 0;
-			// 
-			// information
-			// 
-            this.information.AutoEllipsis = true;
-			this.information.BackColor = System.Drawing.Color.Transparent;
-			this.information.ForeColor = System.Drawing.Color.Snow;
-            this.information.Location = new System.Drawing.Point(12, 1);
-			this.information.Name = "information";
-            this.information.Size = new System.Drawing.Size(331, 37);
-			this.information.TabIndex = 1;
-			this.information.Text = "Checking for latest update";
-            this.information.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// Form1
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Black;
+            this.DownloadProgress = new System.Windows.Forms.ProgressBar();
+            this.Information = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // DownloadProgress
+            // 
+            this.DownloadProgress.Location = new System.Drawing.Point(12, 41);
+            this.DownloadProgress.Name = "DownloadProgress";
+            this.DownloadProgress.Size = new System.Drawing.Size(331, 10);
+            this.DownloadProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.DownloadProgress.TabIndex = 0;
+            // 
+            // Information
+            // 
+            this.Information.AutoEllipsis = true;
+            this.Information.BackColor = System.Drawing.Color.Transparent;
+            this.Information.ForeColor = System.Drawing.Color.Snow;
+            this.Information.Location = new System.Drawing.Point(12, 1);
+            this.Information.Name = "Information";
+            this.Information.Size = new System.Drawing.Size(331, 37);
+            this.Information.TabIndex = 1;
+            this.Information.Text = "Checking for latest update";
+            this.Information.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Updater
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::GameLauncherUpdater.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(355, 63);
-			this.Controls.Add(this.information);
-			this.Controls.Add(this.downloadProgress);
+            this.Controls.Add(this.Information);
+            this.Controls.Add(this.DownloadProgress);
             this.DoubleBuffered = true;
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "Form1";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Update";
-			this.TopMost = true;
-			this.Load += new System.EventHandler(this.Form1_Load);
-			this.ResumeLayout(false);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "Updater";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Update";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar downloadProgress;
-        private System.Windows.Forms.Label information;
+        private System.Windows.Forms.ProgressBar DownloadProgress;
+        private System.Windows.Forms.Label Information;
     }
 }
 
