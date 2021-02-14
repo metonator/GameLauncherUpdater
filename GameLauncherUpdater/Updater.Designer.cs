@@ -1,4 +1,4 @@
-﻿namespace GameLauncherUpdater
+namespace GameLauncherUpdater
 {
     partial class Updater
     {
