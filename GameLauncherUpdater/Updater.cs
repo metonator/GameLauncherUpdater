@@ -75,9 +75,12 @@ namespace GameLauncherUpdater
                 catch 
                 {
                     Information.Text = "Failed to Connect to Main API --> Connecting to GitHub API";
+                    letsTellToGithubThatWeWannaUseGithubUpdateWayNow();
                 }
             };
-            
+        }
+
+        public void letsTellToGithubThatWeWannaUseGithubUpdateWayNow() {
             var client3 = new WebClient();
             Uri StringToUri2 = new Uri("https://api.github.com/repos/SoapboxRaceWorld/GameLauncher_NFSW/releases/latest");
             client3.Headers.Add("user-agent", "GameLauncherUpdater " + Application.ProductVersion + " (+https://github.com/SoapBoxRaceWorld/GameLauncher_NFSW)");
